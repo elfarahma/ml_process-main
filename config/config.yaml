@@ -1,0 +1,85 @@
+# Columns 
+columns_to_keep: ["hdi", "continent", "EFConsPerCap"]
+
+# Path related
+raw_dataset_dir: data/raw/
+train_set_path:
+- data/processed/x_train.pkl
+- data/processed/y_train.pkl
+valid_set_path:
+- data/processed/x_valid.pkl
+- data/processed/y_valid.pkl
+test_set_path:
+- data/processed/x_test.pkl
+- data/processed/y_test.pkl
+train_feng_set_path:
+- data/processed/x_train_feng.pkl
+- data/processed/y_train_feng.pkl
+valid_feng_set_path:
+- data/processed/x_valid_feng.pkl
+- data/processed/y_valid_feng.pkl
+test_feng_set_path:
+- data/processed/x_test_feng.pkl
+- data/processed/y_test_feng.pkl
+raw_dataset_path: data/processed/raw_dataset.pkl
+cleaned_raw_dataset_path: data/processed/raw_dataset.pkl
+production_model_path: models/production_model.pkl
+ohe_continent_path: models/ohe_continent.pkl
+test_path: models/ohe_continent.pkl
+le_encoder_path: models/le_encoder.pkl
+training_log_path: log/training_log.json
+
+
+# Debug related
+print_debug: true
+
+# Columns by data type related
+
+float64_columns:
+- hdi
+- EFConsPerCap
+
+object_columns:
+- continent
+
+
+
+# Predictors and label related
+label: EFConsPerCap
+predictors:
+- hdi
+- continent
+
+# Range of data related
+range_continent:
+- Asia
+- Europe
+- Africa
+- South America
+- Oceania
+- North America
+range_hdi:
+- 0.0
+- 1.0
+
+range_EFConsPerCap:
+- 0
+- 20
+
+# Replacement for missing value related
+
+missing_value_hdi:
+  Asia: 0.6774645669291338
+  Europe: 0.8375
+  Africa: 0.4634999999999999
+  South America: 0.7121287878787879
+  Oceania: 0.6976736842105266
+  North America: 0.699756906077348
+missing_value_EFConsPerCap:
+  Asia: 3.4676567535511817
+  Europe: 5.184596045999999
+  Africa: 1.36272604
+  South America: 3.3626520505227298
+  Oceania: 3.6006926000315795
+  North America: 3.0277224508563543
+
