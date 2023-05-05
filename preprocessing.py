@@ -145,8 +145,8 @@ def standardizerData(set_data: pd.DataFrame) -> pd.DataFrame:
     
     continent_column = set_data.continent
     set_data = set_data.drop("continent", axis = 1)
-    data_columns = set_data.columns  # agar nama kolom tidak hilang
-    data_index = set_data.index  # agar index tidak hilang
+    data_columns = set_data.columns  
+    data_index = set_data.index  
 
     # buat (fit) standardizer
     standardizer = StandardScaler()
