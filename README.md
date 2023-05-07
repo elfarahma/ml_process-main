@@ -60,17 +60,16 @@ Proyek ini bertujuan untuk mengembangkan model machine learning untuk memprediks
 
 ## Format Data untuk Prediksi melalui API
 
-1. Format data: API ini memerlukan data masukan dalam format CSV.
+1. Format data: API ini memerlukan data masukan dalam bentuk dictionary, dengan dua key yaitu "hdi" dan "continent".
 
-2. Header kolom: File CSV harus memiliki header kolom untuk setiap fitur yang digunakan untuk prediksi. Dalam hal ini, kolom yang diperlukan adalah "hdia" dan "continent".
+2. Jenis data: Nilai untuk "hdi" harus berisi data numerik (float), sedangkan nilai "continent" harus berisi data kategorikal.
 
-3. Kolom label: File CSV juga harus memiliki kolom label dengan nama "EFConSPerCap". Ini adalah kolom yang akan digunakan oleh API untuk membuat prediksi.
-
-4. Jenis data: Kolom "hdi" harus berisi data numerik (float), sedangkan kolom "continent" harus berisi data kategorikal. Kolom "EFConsPerCap" harus berisi data numerik (float).
+3. Nilai maksimal untuk "hdi" adalah 1.0, sedangkan nilai minimalnya adalah 0.0. 
+4. Nilai yang diterima untuk key "continent" adalah: "Asia", "Europe", "Africa", "South America", "North America", dan "Oceannia".
 
 5. Nilai yang hilang: API tidak menerima nilai yang hilang. Pastikan semua nilai ada dan valid.
 
-6. Encoding: File CSV harus di-encode dalam format UTF-8.
+
 
 ## Format Prediksi dari API
 
