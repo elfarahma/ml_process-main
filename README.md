@@ -118,9 +118,7 @@ Untuk menggunakan model machine learning ini, Anda dapat mengirimkan permintaan 
 Bila berhasil, maka Anda akan mendapat hasil prediksi dengan format berikut:
 
 ```
-{
-    "res": 5.7
-}
+{'res': array([0.60120381]), 'error_msg': ''}
 
 ```
 # Kesimpulan dan Referensi
