@@ -114,7 +114,13 @@ If successful, you will receive the prediction result in the following format:
 
 {'res': array([0.60120381]), 'error_msg': ''}
 
-# Conclusion and References
-
 ## Conclusion
-- After conducting training and evaluation sessions with three regression models, it was found that the Random Forest Regressor model performed the best with the SMOTE method for handling data imbalance. The model training with hyper-parameter tuning showed better performance in MSE and R-square metrics
+- After conducting training and evaluation sessions with three regression models, it was found that the Random Forest Regressor model performed the best with the SMOTE method for handling data imbalance. The model training with hyper-parameter tuning showed better performance in MSE and R-square metrics compared to those without tuning. However, the training time increased significantly.
+
+- Outliers in this dataset are closely related to the "continent" feature. Classifying regions into continental categories is a simplification of country categories. However, this simplification can be considered too simple and not representative. The continent feature in the Europe category shows that 70% of the data is in the high HDI range but is not normally distributed and leans (skews) to the right. This indicates outliers on the left side. A similar situation is also shown in the relationship between continent feature and EF per capita value, where all categories tend to lean to the left.
+
+- For model development and performance improvement, narrowing the scope of the ML model in this project is necessary. The scale should be reduced from a "world" scale to a "region" scale, such as Southeast Asia, Central Europe, North Africa, etc. This way, the characteristics of a country can be better captured, but the number of classes is not too large.
+
+## References
+
+Shropshire, A. (2019). HDI vs Ecology Plotly. Github. [https://github.com/as6140/hdi_v_ecology_plotly_blog](https://github.com/as6140/hdi_v_ecology_plotly_blog)
