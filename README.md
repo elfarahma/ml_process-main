@@ -1,136 +1,105 @@
-# Description of Project
+# Project Description
 ## Background
-Project machine learning ini bertujuan untuk memprediksi nilai ecological footprint suatu negara dengan mempertimbangkan faktor-faktor seperti Indeks Pembangunan Manusia (HDI) dan lokasi geografis di benua mana negara tersebut berada. Metode yang digunakan adalah regresi linier dengan input berupa HDI dan data kategorikal berupa benua. Output yang dihasilkan adalah prediksi nilai ecological footprint suatu negara. Proyek ini dapat memberikan wawasan tentang faktor-faktor yang berkontribusi pada tingkat kerusakan lingkungan dan dapat membantu dalam merencanakan kebijakan lingkungan yang lebih berkelanjutan di masa depan.
+This machine learning project aims to predict the ecological footprint value of a country by considering factors such as the Human Development Index (HDI) and the geographical location of the continent where the country is located. The method used is linear regression with inputs such as HDI and categorical data representing continents. The output generated is the predicted ecological footprint value of a country. This project can provide insights into the factors contributing to environmental damage levels and can help in planning more sustainable environmental policies in the future.
 
 **Objective**
 
-Dengan demikian objektif dari final project ini juga adalah membangun model berbasis machine learning yang dapat memprediksi nilai ecological footprint penduduk suatu negara,  dengan menggunakan input demografi (misalnya seperti HDI dan harapan hidup) dan fitur kewilayahan suatu negara (benua).  
+Therefore, the objective of this final project is to build a machine learning-based model that can predict the ecological footprint value of a country's population using demographic inputs (such as HDI and life expectancy) and geographical features of a country (continent).
 
 **Business Metrics**
 
-Metriks bisnis yang dapat diambil adalah upaya dan waktu untuk menganalisa sumber-sumber kontribusi peningkatan jejak korban dalam rangka menekan laju kerusakan lingkungan dapat dipermudah dan dipersingkat.
+The business metrics that can be derived include the effort and time required to analyze the sources contributing to increased ecological footprint in order to reduce the rate of environmental damage more efficiently and effectively.
 
 ## Project Architecture
 
-Proyek ini bertujuan untuk mengembangkan model machine learning untuk memprediksi suatu variabel target. Prosesnya terdiri dari langkah-langkah berikut:
+This project aims to develop a machine learning model to predict a target variable. The process consists of the following steps:
 
-1. **Persiapan Data**
+1. **Data Preparation**
 
-   Pada langkah ini, akan dilakukan kegiatan-kegiatan berikut:
+   In this step, the following activities will be carried out:
 
-   - Pengumpulan data
-   - Pendefinisian data, yaitu menentukan lingkup dan batasan nilai data yang meliputi rentang nilai pada kolom numerikal (HDI, EFConsPerCap), tipe data (str, int, float, dll), serta batasan kelas pada kolom kategorikal (continent).
-   - Validasi data, yakni memastikan bahwa setiap entry pada dataset sudah sesuai dengan batasan yang ditentukan dalam pendefinisian data.
-   - Data defense, mekanisme warning apabila ada entry data dari API yang tidak sesuai dengan pendefinisian data.
-   - Data splitting, membagi dataset untuk tujuan training, test, dan validasi. Test size yang digunakan adalah 20%.
+   - Data collection
+   - Data definition, which includes determining the scope and limits of data values, including the range of values in numerical columns (HDI, EFConsPerCap), data types (str, int, float, etc.), and limits on classes in categorical columns (continent).
+   - Data validation to ensure that each entry in the dataset complies with the defined data limits.
+   - Data defense, a warning mechanism if there are data entries from the API that do not comply with the data definition.
+   - Data splitting, dividing the dataset for training, testing, and validation purposes. The test size used is 20%.
 
 2. **Exploratory Data Analysis (EDA)**
 
-   Tahapan EDA dilakukan untuk menganalisa apakah dataset yang ada memiliki kecenderungan yang akan menjadi penghambat atau mengurangi performa model, untuk kemudian dianalisa modifikasi apa yang tepat untuk data tersebut. Hal-hal yang dianalisis meliputi: adanya null-data, skewness, dan imbalance pada data.
+   The EDA phase is conducted to analyze whether the existing dataset has trends that could hinder or reduce model performance, and then analyze the appropriate modifications for the data. The analysis includes checking for null data, skewness, and data imbalance.
 
 3. **Preprocessing**
 
-   Proses yang dilakukan dalam tahap ini adalah penanganan terhadap null-data dengan melakukan imputasi berdasarkan hasil EDA, dan feature engineering. Untuk feature engineering, proses yang dilakukan adalah:
+   The processes in this stage include handling null data by imputation based on EDA results and feature engineering. For feature engineering, the processes include:
 
-   - Transformasi data kategorikal (continent) dengan menggunakan one hot encoding.
-   - Standardisasi data.
-   - Penanganan imbalance data dengan membuat 3 dataset dengan tehnik yang berbeda yaitu undersampling, oversampling, dan SMOTE.
+   - Transforming categorical data (continent) using one-hot encoding.
+   - Data standardization.
+   - Handling data imbalance by creating three datasets using different techniques: undersampling, oversampling, SMOTE.
 
 4. **Modeling**
 
-   Dalam tahapan ini, ada tiga model regresi yang akana dievaluasi untuk kemudian dipilih sebagai model produksi, yaitu regresi linear, Random Forest Regressor, dan Tree Decision Regressor. Proses yang dilakukan dalam tahapan ini adalah:
+   In this stage, three regression models will be evaluated and one will be chosen as the production model: linear regression, Random Forest Regressor, and Decision Tree Regressor. The processes in this stage include:
 
-   - Training dan evaluasi model, dimana di akhir proses ini ditentukan model yang terbaik yang akan digunakan sebagai model produksi sesuai dengan metriks MSE (nilai terendah), R-Square (nilai tertinggi), training time (tersingkat).
-   - Optimalisasi dengan melakukan hyper-parameter tuning, untuk kemudian dilakukan kembali tahap training dan evaluasi model, serta pemilihan model produksi.
-   - Dokumentasi hasil training dan evaluasi model ke dalam training log.
+   - Training and evaluating models, where at the end of this process, the best-performing model is determined based on MSE (lowest value), R-Square (highest value), and training time (shortest).
+   - Optimization by performing hyper-parameter tuning, then repeating the training and model evaluation stages, and selecting the production model.
+   - Documenting the results of training and model evaluation in the training log.
 
 5. **Deployment**
 
-   Deployment merupakan proses kloning infrastruktur machine learning dari environment pada perangkat computer host ke environment baru agar dapat diakses oleh pengguna lain dan dari mana saja dengan menggunakan API. Deployment pada final project ini akan memanfaatkan docker sebagai kontainer pada server AWS.
+   Deployment involves cloning the machine learning infrastructure from the host computer environment to a new environment to be accessible by other users and from anywhere using an API. Deployment in this final project will utilize Docker as a container on an AWS server.
 
-## Output yang Diharapkan
+## Expected Outputs
 
-- Hasil prediksi ML dari model regresi dengan performa terbaik.
-- Training log yang merekam 
-   - Metriks performa model: Mean Squared Error (MSE), R-Square, dan training time
-   - Penanganan imbalance data: undersampling, oversampling, SMOTE 
+- ML prediction results from the regression model with the best performance.
+- Training log recording:
+   - Model performance metrics: Mean Squared Error (MSE), R-Square, and training time
+   - Handling of data imbalance: undersampling, oversampling, SMOTE
 
 # Documentation
 
+## Data Format for API Prediction
 
-## Format Data untuk Prediksi melalui API
+1. Data format: This API requires input data in the form of a dictionary with two keys: "hdi" and "continent."
 
-1. Format data: API ini memerlukan data masukan dalam bentuk dictionary, dengan dua key yaitu "hdi" dan "continent".
+2. Data types: The "hdi" value must be numerical (float), while the "continent" value must be categorical data.
 
-2. Jenis data: Nilai untuk "hdi" harus berisi data numerik (float), sedangkan nilai "continent" harus berisi data kategorikal.
+3. Maximum value for "hdi" is 1.0, and the minimum value is 0.0.
+4. Accepted values for the "continent" key are: "Asia," "Europe," "Africa," "South America," "North America," and "Oceania."
 
-3. Nilai maksimal untuk "hdi" adalah 1.0, sedangkan nilai minimalnya adalah 0.0. 
-4. Nilai yang diterima untuk key "continent" adalah: "Asia", "Europe", "Africa", "South America", "North America", dan "Oceannia".
+5. Missing values: The API does not accept missing values. Ensure all values are present and valid.
 
-5. Nilai yang hilang: API tidak menerima nilai yang hilang. Pastikan semua nilai ada dan valid.
+## Prediction Format from API
 
-
-
-## Format Prediksi dari API
-
-- Nilai prediksi Ecological Footprint per Capita
+- Predicted value of Ecological Footprint per Capita
 
 ## Workflow
 
 ![My Image](https://github.com/elfarahma/ml_process/blob/9a710b8c613ff38bddf6467da5364de29ecb18fa/ML_Process.jpg)
 
 
-# Deskripsi Dataset
+# Dataset Description
 
-Dataset yang digunakan dalam proyek ini adalah dataset time series tahunan dengan rentang waktu dari tahun 2000 sampai dengan 2014 yang mencakup data profil negara-negara seluruh dunia. Total entry yang termaktub dalam dataset tersebut adalah 2156 poin data. Dataset ini merupakan data repository Github yang diolah dengan menggabungkan data dari World Bank dan data dari Global Footprint Network (Shropshire, 2019).
+The dataset used in this project is a yearly time series dataset from 2000 to 2014, covering profile data of countries worldwide. The total entries in this dataset are 2156 data points. This dataset is a Github data repository processed by combining data from the World Bank and the Global Footprint Network (Shropshire, 2019).
 
-Profil negara dalam dataset ini terdiri dari beberapa variabel yaitu:
+The country profiles in this dataset include several variables:
 
-- **Country**: mencakup 146 negara di seluruh dunia.
-- **Continent**: mencakup 6 wilayah benua yaitu Asia, Europe, Africa, South America, Oceania, dan North America.
-- **HDI (Human Development Index)**: parameter kependudukan yang merangkum tingkat kesejahteraan masyarakat suatu wilayah dari aspek kesehatan, pendidikan, dan taraf hidup masyarakat, dengan skala 0 – 1.
-- **Life Expectancy**: rata-rata harapan hidup penduduk suatu negara.
-- **Population**: jumlah penduduk suatu negara pada tahun ke-n.
-- **Ecological Footprint per Capita (EFConsPerCap)**: rata-rata besaran porsi kapasitas lingkungan per tahun yang dihabiskan per penduduk suatu negara dalam melangsungkan kehidupannya, mencakup semua kebutuhan baik primer, sekunder, ataupun tersier (Global Hectare per capita).
-- **Total Ecological Footprint dalam Global Hectare (EFConsTotGHA)**: total besaran porsi kapasitas lingkungan yang dihabiskan suatu negara (Total GHA).
-- **Biocapacity per Capita (BiocapPerCap)**: kapasitas lingkungan suatu negara dalam penyediaan sumberdaya dalam pemenuhan gaya hidup per penduduk (GHA per capita).
-- **Total Biocapacity dalam Global Hectare (BiocapTotGHA)**: total kapasitas lingkungan suatu negara dalam penyediaan sumberdaya dalam pemenuhan gaya hidup per penduduk (GHA per capita).
+- **Country**: covering 146 countries worldwide.
+- **Continent**: covering 6 continental regions: Asia, Europe, Africa, South America, Oceania, and North America.
+- **HDI (Human Development Index)**: a population parameter summarizing the well-being level of a region from aspects of health, education, and standard of living, on a scale of 0 to 1.
+- **Life Expectancy**: average life expectancy of a country's population.
+- **Population**: population of a country in a given year.
+- **Ecological Footprint per Capita (EFConsPerCap)**: average environmental capacity per year spent per capita in a country for sustaining life, covering all primary, secondary, and tertiary needs (Global Hectare per capita).
+- **Total Ecological Footprint in Global Hectares (EFConsTotGHA)**: total environmental capacity spent by a country (Total GHA).
+- **Biocapacity per Capita (BiocapPerCap)**: a country's environmental capacity in providing resources to meet the lifestyle per capita (GHA per capita).
+- **Total Biocapacity in Global Hectares (BiocapTotGHA)**: total environmental capacity of a country in providing resources for the lifestyle per capita (GHA per capita).
 
-Dari dataset di atas, fitur yang digunakan untuk memprediksi nilai Ecological Footprint suatu negara adalah:
+From the above dataset, the features used to predict the ecological footprint value of a country are:
 
 - HDI ("hdi")
 - Continent ("continent")
 
-Sedangkan untuk parameter ecological footprint yang akan diprediksi adalah Ecological Footprint Per Capita (EFConsPerCap).
+The ecological footprint parameter to be predicted is Ecological Footprint Per Capita (EFConsPerCap).
 
-# Bagaimana menggunakannya
-Untuk menggunakan model machine learning ini, Anda dapat mengirimkan permintaan POST ke API endpoint dengan payload input sebagai berikut:
+# How to Use
+To use this machine learning model, you can send a POST request to the API endpoint with the following input payload:
 
-```
-{
-    "hdi": 0.7,
-    "continent": "Asia"
-}
-
-```
-# Format Project Output
-
-Bila berhasil, maka Anda akan mendapat hasil prediksi dengan format berikut:
-
-```
-{'res': array([0.60120381]), 'error_msg': ''}
-
-```
-# Kesimpulan dan Referensi
-
-## Kesimpulan
-- Setelah dilakukan sesi training dan evaluasi dengan tiga model regresi. Didapat bahwa model regresi dengan performa terbaik adalah Random Forest Regressor dengan metode SMOTE untuk penanganan imbalance data. Model training  dengan hyper-parameter tuning menunjukkan performa dari metriks MSE dan R-square yang lebih baik daripada yang tidak. Namun waktu latih bertambah  cukup signifikan. 
-
-- Outlier pada dataset ini sangat terkait dengan fitur “continent”. Pengklasifikasian wilayah ke dalam kategori benua adalah pengkerucutan dari kategori negara. Namun pengekerucutan ini dapat dikatakan terlalu sederhana dan tidak representatif. Fitur benua pada kategori Eropa menunjukkan 70% data berada pada ranah HDI yang tinggi, tetapi tidak berdistribusi normal dan condong (skewing) sebelah kanan. Ini menunjukkan adanya outlier pada sebelah kiri. Hal serupa juga ditunjukkan pada hubungan antara fitur benua dan nilai EF per kapita, terlihat bahwa semua kategori memiliki kecenderungan condong ke sebelah kiri.
-
-- Untuk pengembangan dan peningkatan performa model, perlu melakukan pengecilan ruang lingkup model ML dalam project ini. Dimana skalanya diperkecil dari skala "world" menjadi "region" contohnya Asia Tenggara, Eropa Tengah, Afrika Utara, dll. Dengan demikian karakteristik suatu negara dapat lebih tertangkap, namun jumlah kelas tidak terlalu besar.
-
-
-## Referensi
-
-Shropshire, A. (2019). HDI vs Ecology Plotly. Github. https://github.com/as6140/hdi_v_ecology_plotly_blog
