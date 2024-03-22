@@ -103,3 +103,18 @@ The ecological footprint parameter to be predicted is Ecological Footprint Per C
 # How to Use
 To use this machine learning model, you can send a POST request to the API endpoint with the following input payload:
 
+{
+"hdi": 0.7,
+"continent": "Asia"
+}
+
+# Project Output Format
+
+If successful, you will receive the prediction result in the following format:
+
+{'res': array([0.60120381]), 'error_msg': ''}
+
+# Conclusion and References
+
+## Conclusion
+- After conducting training and evaluation sessions with three regression models, it was found that the Random Forest Regressor model performed the best with the SMOTE method for handling data imbalance. The model training with hyper-parameter tuning showed better performance in MSE and R-square metrics
